@@ -1,5 +1,5 @@
 import React from 'react';
-import { Navigate, Route } from 'react-router';
+import { Route } from 'react-router';
 import { UserSettingsPage } from '@backstage/plugin-user-settings';
 import { apis } from './apis';
 import { Root } from './components/Root';
@@ -8,6 +8,7 @@ import { createApp } from '@backstage/app-defaults';
 import { FlatRoutes } from '@backstage/core-app-api';
 import { githubAuthApiRef } from '@backstage/core-plugin-api';
 import { SignInPage } from '@backstage/core-components';
+import { CreateRepositriesPage } from '@internal/plugin-create-repositries';
 
 const app = createApp({
   apis,
@@ -32,8 +33,9 @@ const AppRouter = app.getRouter();
 
 const routes = (
   <FlatRoutes>
-    <Route path="/" element={<Navigate to="/settings" />} />
+    <Route path="/" element={<CreateRepositriesPage />} />
     <Route path="/settings" element={<UserSettingsPage />} />
+    <Route path="/create-repositries" element={<CreateRepositriesPage />}/>
   </FlatRoutes>
 );
 
